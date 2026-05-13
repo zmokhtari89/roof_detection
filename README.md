@@ -15,7 +15,7 @@ The dataset consists of 30 RGB images (256×256) with 25 corresponding
 ground truth masks, leaving 5 unlabeled images as the test set.
 
 The task is challenging for two reasons: the training set is small (20
-images after the train/val split), and some labels are noisy — a known
+images after the train/val split), and some labels are noisy, a known
 difficulty in satellite imagery annotation.
 
 ---
@@ -27,11 +27,11 @@ four models in total and selecting the best based on validation metrics.
 
 **Architectures:**
 - U-Net (Ronneberger et al., 2015)
-- U-Net++ (Zhou et al., 2018) — improves on U-Net with dense nested
+- U-Net++ (Zhou et al., 2018): Improves on U-Net with dense nested
   skip connections that progressively refine features before they reach
   the decoder, reducing the semantic gap at each resolution level
 
-Both use a **ResNet34 encoder pretrained on ImageNet** — with only 20
+Both use a **ResNet34 encoder pretrained on ImageNet**; with only 20
 training images, transfer learning is essential.
 
 **Loss configurations:**
@@ -72,6 +72,21 @@ are typically filtered by downstream geometric processing.
 
 The notebook is designed to run on **Google Colab** with a T4 GPU.
 Click the badge above to open it directly. The dataset is downloaded
-automatically — no manual setup required.
+automatically, no manual setup required.
 
-If running locally, install dependencies with:
+If running locally, install dependencies via `pip install -r requirements.txt`.
+
+---
+
+## Dependencies
+
+| Package | Version |
+|---|---|
+| torch | 2.10.0 |
+| torchvision | 0.25.0 |
+| segmentation-models-pytorch | 0.5.0 |
+| albumentations | 2.0.8 |
+| numpy | 2.0.2 |
+| matplotlib | 3.10.0 |
+| Pillow | — |
+| scikit-learn | 1.6.1 |
